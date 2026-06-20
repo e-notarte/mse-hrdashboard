@@ -12,95 +12,78 @@
 <style>
 
 *{
-
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Inter',sans-serif;
-
 }
 
 
 body{
 
-height:100vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#fefce8;
+background:#f3f4f6;
+padding:20px;
 
 }
 
 
-
-/* LOGIN CARD */
 
 .card{
 
-width:420px;
+width:100%;
+max-width:420px;
 background:white;
 padding:40px;
 border-radius:20px;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,.12);
-
-border-top:8px solid #22c55e;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
 
 }
 
 
-
-/* TITLE */
 
 h1{
 
 text-align:center;
-color:#15803d;
+color:#2563eb;
 font-size:28px;
 
 }
 
 
-/* SUBTITLE */
 
 p{
 
 text-align:center;
-color:#78716c;
-margin-bottom:30px;
+color:#6b7280;
+margin:15px 0 30px;
 
 }
 
 
 
-/* INPUT */
 
 input{
 
 
 width:100%;
-padding:12px;
+padding:14px;
+
 margin-bottom:15px;
 
 border-radius:10px;
 
-border:1px solid #d1d5db;
+border:1px solid #ccc;
 
-outline:none;
+font-size:15px;
+
 
 }
 
 
-input:focus{
-
-border-color:#f59e0b;
-
-}
-
-
-
-/* BUTTON */
 
 button{
 
@@ -109,7 +92,7 @@ width:100%;
 
 padding:14px;
 
-background:#f97316;
+background:#2563eb;
 
 color:white;
 
@@ -117,11 +100,10 @@ border:none;
 
 border-radius:10px;
 
+font-size:16px;
+
 cursor:pointer;
 
-font-weight:600;
-
-font-size:15px;
 
 }
 
@@ -129,34 +111,35 @@ font-size:15px;
 
 button:hover{
 
-
-background:#ea580c;
-
+background:#1d4ed8;
 
 }
 
 
 
-/* FOOTER */
+/* Mobile */
 
-.footer{
+@media(max-width:480px){
 
 
-margin-top:25px;
+.card{
 
-text-align:center;
-
-font-size:13px;
-
-color:#a8a29e;
-
+padding:25px;
 
 }
 
+
+h1{
+
+font-size:22px;
+
+}
+
+
+}
 
 
 </style>
-
 
 </head>
 
