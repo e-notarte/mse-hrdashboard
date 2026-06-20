@@ -649,7 +649,7 @@ padding:13px;
 
 <h1>
 
-Employee / Applicant Enrollment
+Employee Enrollment
 
 </h1>
 
@@ -703,7 +703,7 @@ Employee ID
 
 id="employeeID"
 
-placeholder="EMP-0001">
+readonly>
 
 
 </div>
@@ -718,7 +718,7 @@ placeholder="EMP-0001">
 
 <label>
 
-Employee Type
+Employee Status
 
 </label>
 
@@ -729,14 +729,14 @@ Employee Type
 
 <option>
 
-Applicant
+Contractual
 
 </option>
 
 
 <option>
 
-Employee
+Probitionary
 
 </option>
 
@@ -1266,6 +1266,27 @@ alert(result);
 
 
 }
+  function generateEmployeeID(){
+
+
+let number = 
+Math.floor(1000 + Math.random() * 9000);
+
+
+
+document.getElementById("employeeID").value =
+
+"EMP-" + number;
+
+
+
+}
+
+
+
+// run automatically when page loads
+
+window.onload = generateEmployeeID;
 
 
 
