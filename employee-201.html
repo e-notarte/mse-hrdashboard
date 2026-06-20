@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Employee 201 File System</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+
+}
+
+
+
+body{
+
+background:#fefce8;
+
+display:flex;
+
+min-height:100vh;
+
+}
+
+
+
+
+
+/* SIDEBAR */
+
+
+.sidebar{
+
+width:280px;
+
+background:#15803d;
+
+color:white;
+
+padding:20px;
+
+}
+
+
+
+.logo{
+
+font-size:24px;
+
+font-weight:700;
+
+margin-bottom:25px;
+
+}
+
+
+
+
+.search-box input{
+
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:10px;
+
+outline:none;
+
+margin-bottom:20px;
+
+
+}
+
+
+
+
+.employee-list{
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+
+}
+
+
+
+.employee-item{
+
+
+background:#166534;
+
+padding:12px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+
+}
+
+
+
+
+.employee-item:hover{
+
+
+background:#14532d;
+
+
+}
+
+
+
+
+.employee-name{
+
+
+font-weight:600;
+
+
+}
+
+
+
+.employee-position{
+
+
+font-size:12px;
+
+color:#dcfce7;
+
+
+}
+
+
+
+
+
+
+
+/* MAIN */
+
+
+.main{
+
+
+flex:1;
+
+padding:25px;
+
+}
+
+
+
+
+
+.topbar{
+
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+
+}
+
+
+
+.topbar h1{
+
+
+color:#15803d;
+
+
+}
+
+
+
+
+
+.upload-btn{
+
+
+background:#f97316;
+
+color:white;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:600;
+
+
+}
+
+
+
+
+
+
+/* PROFILE */
+
+
+.profile-card{
+
+
+background:white;
+
+border-radius:20px;
+
+padding:25px;
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.1);
+
+
+border-top:6px solid #22c55e;
+
+
+}
+
+
+
+
+.avatar{
+
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+background:#22c55e;
+
+color:white;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+font-size:30px;
+
+font-weight:bold;
+
+
+}
+
+
+
+.profile-info{
+
+
+flex:1;
+
+}
+
+
+
+.profile-info h2{
+
+
+color:#15803d;
+
+
+}
+
+
+
+.profile-info p{
+
+
+color:#78716c;
+
+margin-top:5px;
+
+
+}
+
+
+
+
+
+/* PROGRESS */
+
+
+.progress-section{
+
+
+width:300px;
+
+
+}
+
+
+
+.progress-bar{
+
+
+height:12px;
+
+background:#e5e7eb;
+
+border-radius:20px;
+
+overflow:hidden;
+
+
+margin-top:10px;
+
+
+}
+
+
+
+.progress-fill{
+
+
+height:100%;
+
+width:85%;
+
+background:#22c55e;
+
+
+}
+
+
+
+
+
+
+
+/* ALERT */
+
+
+.alert{
+
+
+background:#fff7ed;
+
+border-left:6px solid #f97316;
+
+padding:15px;
+
+border-radius:10px;
+
+margin-top:20px;
+
+
+color:#9a3412;
+
+
+}
+
+
+
+
+
+
+/* DOCUMENTS */
+
+
+.section-title{
+
+
+margin:30px 0 20px;
+
+color:#15803d;
+
+
+}
+
+
+
+
+
+.categories{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(250px,1fr));
+
+
+gap:20px;
+
+
+}
+
+
+
+
+
+.card{
+
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+
+box-shadow:
+
+0 10px 20px rgba(0,0,0,.08);
+
+
+cursor:pointer;
+
+
+transition:.3s;
+
+
+border-top:5px solid #22c55e;
+
+
+}
+
+
+
+
+.card:hover{
+
+
+transform:translateY(-5px);
+
+
+}
+
+
+
+
+
+.card h3{
+
+
+color:#15803d;
+
+margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.card p{
+
+
+color:#78716c;
+
+font-size:14px;
+
+
+}
+
+
+
+
+.badge{
+
+
+display:inline-block;
+
+margin-top:15px;
+
+background:#fef3c7;
+
+color:#d97706;
+
+
+padding:6px 12px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:600;
+
+
+}
+
+
+
+
+
+/* TABLET */
+
+
+@media(max-width:900px){
+
+
+
+body{
+
+flex-direction:column;
+
+}
+
+
+
+
+.sidebar{
+
+
+width:100%;
+
+
+}
+
+
+
+.main{
+
+
+padding:20px;
+
+
+}
+
+
+
+
+.profile-card{
+
+
+flex-direction:column;
+
+align-items:flex-start;
+
+
+}
+
+
+
+.progress-section{
+
+
+width:100%;
+
+
+}
+
+
+}
+
+
+
+
+
+
+/* PHONE */
+
+
+@media(max-width:600px){
+
+
+
+body{
+
+
+padding:0;
+
+
+}
+
+
+
+
+.main{
+
+
+padding:15px;
+
+
+}
+
+
+
+.topbar{
+
+
+flex-direction:column;
+
+
+align-items:flex-start;
+
+
+gap:15px;
+
+
+}
+
+
+
+.topbar h1{
+
+
+font-size:22px;
+
+
+}
+
+
+
+
+.upload-btn{
+
+
+width:100%;
+
+
+}
+
+
+
+.profile-card{
+
+
+padding:20px;
+
+
+}
+
+
+
+.avatar{
+
+
+width:75px;
+
+height:75px;
+
+
+font-size:25px;
+
+
+}
+
+
+
+.categories{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+}
+
+
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+
+<div class="logo">
+
+Employee 201
+
+</div>
+
+
+
+<div class="search-box">
+
+<input placeholder="Search Employee...">
+
+</div>
+
+
+
+
+<div class="employee-list">
+
+
+<div class="employee-item">
+
+
+<div class="employee-name">
+
+Juan Dela Cruz
+
+</div>
+
+
+<div class="employee-position">
+
+Project Engineer
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="employee-item">
+
+
+<div class="employee-name">
+
+Maria Santos
+
+</div>
+
+
+<div class="employee-position">
+
+HR Officer
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="employee-item">
+
+
+<div class="employee-name">
+
+Emmanuel Notarte
+
+</div>
+
+
+<div class="employee-position">
+
+Asset Management Associate
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- MAIN -->
+
+
+<div class="main">
+
+
+
+<div class="topbar">
+
+
+<h1>
+
+Employee 201 File Dashboard
+
+</h1>
+
+
+
+<button class="upload-btn">
+
++ Upload Document
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="profile-card">
+
+
+
+<div class="avatar">
+
+EN
+
+</div>
+
+
+
+<div class="profile-info">
+
+
+<h2>
+
+Emmanuel Notarte
+
+</h2>
+
+
+<p>
+
+Asset Management Associate
+
+</p>
+
+
+<p>
+
+Employee ID: EMP-2022-001
+
+</p>
+
+
+<p>
+
+Date Hired: June 01, 2022
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="progress-section">
+
+
+<strong>
+
+File Completion
+
+</strong>
+
+
+
+<div class="progress-bar">
+
+
+<div class="progress-fill"></div>
+
+
+</div>
+
+
+
+<p>
+
+85% Complete
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="alert">
+
+
+⚠ Missing Documents:
+
+Transcript of Records, NBI Clearance, Annual Medical Exam
+
+
+</div>
+
+
+
+
+
+
+
+
+<h2 class="section-title">
+
+Document Categories
+
+</h2>
+
+
+
+
+
+
+
+<div class="categories">
+
+
+
+<div class="card">
+
+<h3>
+👤 Personal Information
+</h3>
+
+<p>
+
+Resume, IDs, Birth Certificate
+
+</p>
+
+<span class="badge">
+
+12 Files
+
+</span>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+📄 Employment Documents
+
+</h3>
+
+<p>
+
+Contracts and Job Description
+
+</p>
+
+<span class="badge">
+
+8 Files
+
+</span>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+🏛 Government Compliance
+
+</h3>
+
+<p>
+
+SSS, PhilHealth, Pag-IBIG, TIN
+
+</p>
+
+<span class="badge">
+
+10 Files
+
+</span>
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+🎓 Educational Records
+
+</h3>
+
+<p>
+
+TOR, Diploma, Certificates
+
+</p>
+
+<span class="badge">
+
+6 Files
+
+</span>
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+📈 Performance Management
+
+</h3>
+
+<p>
+
+KPIs, Evaluations, Awards
+
+</p>
+
+<span class="badge">
+
+15 Files
+
+</span>
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+🕒 Attendance & Leave
+
+</h3>
+
+<p>
+
+Leave and Attendance Records
+
+</p>
+
+<span class="badge">
+
+24 Files
+
+</span>
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+💰 Compensation & Benefits
+
+</h3>
+
+<p>
+
+Salary and Benefits Records
+
+</p>
+
+<span class="badge">
+
+11 Files
+
+</span>
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+📚 Training & Development
+
+</h3>
+
+<p>
+
+Seminars and Certifications
+
+</p>
+
+<span class="badge">
+
+9 Files
+
+</span>
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+⚠ Disciplinary Records
+
+</h3>
+
+<p>
+
+Memoranda and Incident Reports
+
+</p>
+
+<span class="badge">
+
+2 Files
+
+</span>
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+🏥 Medical Records
+
+</h3>
+
+<p>
+
+Medical Exams and Fit-to-Work
+
+</p>
+
+<span class="badge">
+
+5 Files
+
+</span>
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+</body>
+
+</html>
